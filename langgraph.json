@@ -1,0 +1,15 @@
+{
+  "$schema": "https://langgra.ph/schema.json",
+  "python_version": "3.11",
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./src/react_agent/graph.py:graph"
+  },
+  "env": ".env",
+  "dockerfile_lines": [
+    "# Copy project manually before installing",
+    "ADD . /deps/ai_sql_generator_langgraph",
+    "RUN cd /deps/ai_sql_generator_langgraph && pip install --no-cache-dir -e .",
+    "ENV PYTHONPATH=\"/deps/ai_sql_generator_langgraph/src:$PYTHONPATH\""
+  ]
+}
